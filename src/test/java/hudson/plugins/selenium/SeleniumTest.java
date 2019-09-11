@@ -94,7 +94,7 @@ public class SeleniumTest {
         DesiredCapabilities dc = DesiredCapabilities.htmlUnit();
 
         // No label requested should find the node
-        WebDriver wd = new RemoteWebDriver(new URL("http://192.168.92.93:4444/wd/hub"), dc);
+        WebDriver wd = new RemoteWebDriver(new URL("http://192.168.33.70:4444/wd/hub"), dc);
         try {
             wd.get(WEB_SITE_URL);
             new WebDriverWait(wd, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("ji-toolbar")));
@@ -106,7 +106,7 @@ public class SeleniumTest {
         dc.setCapability("jenkins:label", "foolabel");
         WebDriver dr = null;
         try {
-            dr = new RemoteWebDriver(new URL("http://192.168.92.93:4444/wd/hub"), dc);
+            dr = new RemoteWebDriver(new URL("http://192.168.33.70:4444/wd/hub"), dc);
         } catch (Exception e) {
             fail(e.getMessage()); // should have passed
         } finally {
@@ -118,7 +118,7 @@ public class SeleniumTest {
         dc = DesiredCapabilities.htmlUnit();
         dc.setCapability("jenkins:nodeName", "foo");
         try {
-            dr = new RemoteWebDriver(new URL("http://192.168.92.93:4444/wd/hub"), dc);
+            dr = new RemoteWebDriver(new URL("http://192.168.33.70:4444/wd/hub"), dc);
         } catch (Exception e) {
             fail(e.getMessage()); // should have passed
         } finally {
@@ -130,7 +130,7 @@ public class SeleniumTest {
         dc = DesiredCapabilities.htmlUnit();
         dc.setCapability("jenkins:label", "bar");
         try {
-            new RemoteWebDriver(new URL("http://192.168.92.93:4444/wd/hub"), dc);
+            new RemoteWebDriver(new URL("http://192.168.33.70:4444/wd/hub"), dc);
             fail("jenkins:label=bar should not return a valid session"); // should have failed
         } catch (Exception e) {
 
