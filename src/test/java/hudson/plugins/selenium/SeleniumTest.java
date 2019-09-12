@@ -75,12 +75,7 @@ public class SeleniumTest {
     	}
     	assertEquals(validationValue, contains);
     }
-	@BeforeMethod
-	public void setUp() throws Exception {
-		System.setProperty("webdriver.htmlunit.driver", "/home/vagrant/.jenkins/workspace/SELENIUMJavacode/htmlunit-driver-2.36.0-jar-with-dependencies.jar");
-		driver = new HtmlUnitDriver();
-		driver.get("http://jenkins.io/");
-	}
+
 	
     @Test
     public void testHtmlUnitDriver() throws Exception {
