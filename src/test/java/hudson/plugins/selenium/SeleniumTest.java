@@ -75,7 +75,13 @@ public class SeleniumTest {
     	}
     	assertEquals(validationValue, contains);
     }
-
+	@BeforeMethod
+	public void setUp() throws Exception {
+		System.setProperty("webdriver.htmlunit.driver", "/home/vagrant/.jenkins/workspace/SELENIUMJavacode/htmlunit-driver-2.36.0-jar-with-dependencies.jar");
+		driver = new HtmlUnitDriver();
+		driver.get("http://jenkins.io/");
+	}
+	
     @Test
     public void testHtmlUnitDriver() throws Exception {
 
@@ -84,7 +90,7 @@ public class SeleniumTest {
 
         List<WebDriverBrowser> browsers = new ArrayList<WebDriverBrowser>();
         browsers.add(new HTMLUnitBrowser(10));
-
+     
         CustomWDConfiguration cc = new CustomWDConfiguration(5001, -1, browsers, null, 5);
         addConfiguration("test", new NodeLabelMatcher("foolabel"), cc);
         j.createSlave("foo", "foolabel", null);
